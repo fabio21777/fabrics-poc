@@ -224,3 +224,9 @@ fabric.Image.fromURL(imgURL, (img) => {
 #### O resultado do canvas é similar a esse 
 
 ![[Pasted image 20240506094139.png]]
+
+
+# Poc
+
+
+

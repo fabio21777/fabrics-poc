@@ -1,3 +1,20 @@
 #myCanvas{
   background-color: antiquewhite;
 }
+
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.item{
+  width: 30%;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+}

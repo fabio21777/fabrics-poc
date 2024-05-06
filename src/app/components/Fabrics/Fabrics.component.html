@@ -1,5 +1,13 @@
-<div>
-  <canvas id="myCanvas" width="2000" height="500"></canvas>
+<div class="row">
+  @for (item of types; track $index) {
+  <div class="item" draggable="true" (dragstart)="dragStart(item.type)" >
+    {{ item.label }}
+  </div>
+  }
+</div>
+<!-- se o elemento for arratado para essa div então adiciono no canvas -->
+<div (drop)="drop()" (dragover)="allowDrop($event)">
+  <canvas id="myCanvas" width="2000" height="500" ></canvas>
   <button (click)="exportToSVG()">Download SVG</button>
   <button (click)="exportToPNG()">Download PNG</button>
   <button (click)="exportToJSON()">Download json</button>
