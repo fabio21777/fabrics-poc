@@ -19,6 +19,7 @@ http://fabricjs.com/fabric-intro-part-5
 
 [Exemplo básico em angular no StackBlitz](https://stackblitz.com/edit/2toad-angular-fabric?file=app%2Fapp.component.ts)
 [Exemplo que pode ser útil no CodePen](https://codepen.io/r-w-c/pen/Jjwrbxa)
+http://fabricjs.com/loadfonts
 
 ## o que é como funciona
 
@@ -102,9 +103,9 @@ exporta o elemento canvas para objeto
 exporta a representação canvas para um svg
 
 
-### Importação (Importação)
+## É possível enviar vários de entrada para ele (Importação)
 
-é possível importar um objeto para o canvas gerado pelo método loadFromJSON
+É possível importar um objeto para o canvas gerado pelo método loadFromJSON
 
 ```ts
 exportToJSON() {
@@ -128,3 +129,98 @@ this.canvas.loadFromJSON(json);
 }
 ```
 
+## Adicionando elementos no canvas utilizando o Fabric.js
+
+O primeiro passo é ter uma instância do canvas para iniciarmos a adição de elementos. Precisamos ter uma referência de um elemento canvas no HTML, a partir desse elemento adicionaremos novos elementos ao canvas.
+
+
+
+```ts
+this.canvas = new fabric.Canvas('myCanvas', );
+```
+
+```html
+<div>
+<canvas id="myCanvas" width="2000" height="500"></canvas>
+</div>
+```
+
+#### Adicionando novos elementos 
+
+```ts
+ngOnInit() {
+
+	this.canvas = new fabric.Canvas('myCanvas');
+	
+	
+	// Adicionando um objeto IText
+	
+	this.canvas.add(new fabric.IText('Hello Fabric!'));
+
+  
+
+// Adicionando um retângulo
+
+	this.canvas.add(new fabric.Circle({
+	
+		radius: 20,
+		
+		fill: 'green',
+		
+		left: 100,
+		
+		top: 100
+	
+	}));
+
+  
+
+// Adicionando um triângulo
+
+	this.canvas.add(new fabric.Triangle({
+
+		width: 20,
+		
+		height: 30,
+		
+		fill: 'blue',
+		
+		left: 50,
+		
+		top: 50
+
+	}));
+
+  
+
+// Adicionando a imagem local
+
+const imgURL = '/assets/itexto-1.png'; // URL relativa
+
+fabric.Image.fromURL(imgURL, (img) => {
+
+	img.set({
+	
+		left: 200,
+		
+		top: 200,
+		
+		angle: 0,
+
+	});
+
+		this.canvas.add(img);
+
+	});
+
+  
+
+	console.log(this.canvas.getObjects());
+
+}
+```
+
+
+#### O resultado do canvas é similar a esse 
+
+![[Pasted image 20240506094139.png]]

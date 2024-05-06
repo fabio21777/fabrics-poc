@@ -10,14 +10,42 @@ export class FabricsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.canvas = new fabric.Canvas('myCanvas', );
+    this.canvas = new fabric.Canvas('myCanvas');
 
+    // Adicionando um objeto IText
     this.canvas.add(new fabric.IText('Hello Fabric!'));
-    //add outro texto
-    this.canvas.add(new fabric.IText('Hello Fabric!'));
-    //add outro texto
-    this.canvas.add(new fabric.IText('Hello Fabric!'));
-  }
+
+    // Adicionando um retângulo
+    this.canvas.add(new fabric.Circle({
+      radius: 20,
+      fill: 'green',
+      left: 100,
+      top: 100
+    }));
+
+    // Adicionando um triângulo
+    this.canvas.add(new fabric.Triangle({
+      width: 20,
+      height: 30,
+      fill: 'blue',
+      left: 50,
+      top: 50
+    }));
+
+    // Adicionando a imagem local
+    const imgURL = '/assets/itexto-1.png'; // URL relativa
+    fabric.Image.fromURL(imgURL, (img) => {
+        img.set({
+            left: 200,
+            top: 200,
+            angle: 0,
+        });
+        this.canvas.add(img);
+    });
+
+    console.log(this.canvas.getObjects());
+}
+
 
   exportToSVG() {
     let svg = this.canvas.toSVG();

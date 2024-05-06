@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FabricsComponent } from './components/Fabrics/Fabrics.component';
 
 export const routes: Routes = [
-  { path: 'fabrics', component: FabricsComponent }
+  { path: '', component: FabricsComponent }
 ];
 
 @NgModule({
